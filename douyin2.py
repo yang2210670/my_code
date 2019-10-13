@@ -13,12 +13,13 @@ def url_parse(first_url):
 def get_mid(url):
     headers = {'user-agent': 'Mozilla/5.0'}
     res = requests.get(url, headers=headers, allow_redirects=False)
+    id = res.text.split('/')[5]
     mid = re.findall("mid=(.*?)&amp", res.text)[0]
-    return mid
+    return mid,id
 
 
-def get_parameter(mid):
-    api = "https://www.iesdouyin.com/share/video/6737411526405262599/"
+def get_parameter(mid,id):
+    api = "https://www.iesdouyin.com/share/video/{}/".format(id)
     querystring = {"region": "CN", "mid": mid, "u_code": "14kfd7jc6", "titleType": "title",
                    "utm_source": "copy_link", "utm_campaign": "client_share", "utm_medium": "android", "app": "aweme"}
     headers = {
@@ -69,8 +70,8 @@ def get_data(item_ids, dytk):
 def main():
     first_url = input("请输入分享连接：")
     url = url_parse(first_url)
-    mid = get_mid(url)
-    parameter = get_parameter(mid)
+    mid_data = get_mid(url)
+    parameter = get_parameter(mid_data[0],mid_data[1])
     data = get_data(parameter[0],parameter[1])
     downloadfile(data[1], data[0].split(" ")[0] + ".mp4")
 
