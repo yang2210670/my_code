@@ -20,19 +20,21 @@ downloadfile(url,filename)
 
     1.直接引用上方源码，运行即可
 
-    2.安装
+    2.安装相关库
 
     ```python
     pip3 install ddouyin
+    pip3 install requests
+pip3 install mydload
     ```
 
     然后在你的代码里这样使用：
-
+    
     ```python
     from ddouyin import douyin
-    douyin("你复制的抖音分享链接")
+douyin("你复制的抖音分享链接")
     ```
-
+    
     
 
 #### 必应壁纸爬虫
