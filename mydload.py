@@ -5,7 +5,7 @@ from sys import stdout
 import time
 
 def downloadfile(url, filename):
-    filename = filename.split(" ")[0] + op.splitext(url)[-1]
+    filename = filename.split(" ")[0]
     file_to_save = op.join(os.getcwd(), filename)
     headers = {'user-agent': 'Mozilla/5.0'}
 
@@ -48,5 +48,5 @@ def downloadfile(url, filename):
 
 
 if __name__ == "__main__":
-    url = "https://codeload.github.com/godweiyang/hexo-matery-modified/zip/master"
-    downloadfile(url, "a")
+    url = "http://video.dispatch.tc.qq.com/uwMROfz2r5zAoaQXGdGlumdfKb0n1QOA7fl1lk1f38gzgS2x/d0028ulsu84.p201.1.mp4?vkey=80FF7A7E34616496A3800D8BE5A3115913BBCF1F4499AD7A48EF51E1FC68F15207EB74A70136D85DEFDB31A5A0977E43DB7C35F6871D4F3BB3F9A6B7E0223C8100A91FA46EF8ED6BF9386E304596E9C8F60C89C950E2882CAAF1AF89E880497F9811A7FF942F2C8835D59622A302E11C?type=mp4"
+    downloadfile(url, "a.mp4")
