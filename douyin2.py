@@ -3,10 +3,11 @@ import requests
 import json
 import re
 from mydload import downloadfile
+from pprint import pprint
 
 
 def url_parse(first_url):
-    url = first_url.split(' ')[-2]
+    url = 'http://v.douyin.com/' + re.findall('http://v.douyin.com/(.*?)/', first_url)[0] + "/"
     return url
 
 
@@ -64,6 +65,7 @@ def get_data(item_ids, dytk):
     response = requests.request("GET", api, headers=headers, params=querystring)
     name = json.loads(response.text)['item_list'][0]['desc'].strip()
     addr = json.loads(response.text)['item_list'][0]['video']['play_addr']['url_list'][0]
+    pprint(json.loads(response.text)['item_list'][0]['video'])
     return name, addr
 
 
@@ -73,7 +75,7 @@ def main():
     mid_data = get_mid(url)
     parameter = get_parameter(mid_data[0],mid_data[1])
     data = get_data(parameter[0],parameter[1])
-    downloadfile(data[1], data[0].split(" ")[0] + ".mp4")
+    # downloadfile(data[1], data[0].split(" ")[0] + ".mp4")
 
 
 if __name__ == '__main__':
@@ -81,3 +83,5 @@ if __name__ == '__main__':
         main()
     except:
         print("不好意思，接口又挂了，呜呜呜！")
+
+
