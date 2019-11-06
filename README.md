@@ -4,10 +4,12 @@
 #### mydload下载器
 
 传入url,文件名即可下载
+
 ```python
 from mydload import downloadfile
 downloadfile(url,filename)
 ```
+
 #### 抖音视频下载
 
 + douyin1.py（已经失效）
@@ -25,14 +27,14 @@ downloadfile(url,filename)
     ```python
     pip3 install ddouyin
     pip3 install requests
-pip3 install mydload
+	pip3 install mydload
     ```
 
-    然后在你的代码里这样使用：
+然后在你的代码里这样使用：
     
     ```python
     from ddouyin import douyin
-douyin("你复制的抖音分享链接")
+	douyin("你复制的抖音分享链接")
     ```
     
     
