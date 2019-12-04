@@ -48,7 +48,7 @@ def main():
     vname = get_data(id)[1] + ".mp4"
     furl = get_data(id)[0][0]
     vurl = url_parse(furl)
-    downloadfile(vurl,vname)
+    downloadfile(vurl,vname + ".mp4")
 
 if __name__ == '__main__':
     try:
